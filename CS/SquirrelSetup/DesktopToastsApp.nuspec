@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>DesktopToastsApp</id>
+		<version>1.0.0</version>
+		<dependencies></dependencies>
+    <authors>DesktopToastsApp authors</authors>
+    <description>DesktopToastsApp</description>
+	</metadata>
+	<files>
+
+		<file src="..\DesktopToastsApp\bin\Release\*.*" target="lib\net45" />
+
+	</files>
+</package>

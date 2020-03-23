@@ -28,7 +28,7 @@ namespace DesktopToastsApp
     // The GUID CLSID must be unique to your app. Create a new GUID if copying this code.
     [ClassInterface(ClassInterfaceType.None)]
     [ComSourceInterfaces(typeof(INotificationActivationCallback))]
-    [Guid("50cfb67f-bc8a-477d-938c-93cf6bfb3320"), ComVisible(true)]
+    [Guid("423a62a7-c9b9-5d9e-b466-12c28eb6dc25"), ComVisible(true)]
     public class MyNotificationActivator : NotificationActivator
     {
         public override void OnActivated(string arguments, NotificationUserInput userInput, string appUserModelId)

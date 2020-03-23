@@ -49,14 +49,14 @@
                 <com:Extension Category="windows.comServer">
                     <com:ComServer>
                         <com:ExeServer Executable="DesktopToastsApp\DesktopToastsApp.exe" Arguments="-ToastActivated" DisplayName="Toast activator">
-                            <com:Class Id="50cfb67f-bc8a-477d-938c-93cf6bfb3320" DisplayName="Toast activator"/>
+                            <com:Class Id="423a62a7-c9b9-5d9e-b466-12c28eb6dc25" DisplayName="Toast activator"/>
                         </com:ExeServer>
                     </com:ComServer>
                 </com:Extension>
 
                 <!--Specify which CLSID to activate when toast clicked-->
                 <desktop:Extension Category="windows.toastNotificationActivation">
-                    <desktop:ToastNotificationActivation ToastActivatorCLSID="50cfb67f-bc8a-477d-938c-93cf6bfb3320"/>
+                    <desktop:ToastNotificationActivation ToastActivatorCLSID="423a62a7-c9b9-5d9e-b466-12c28eb6dc25"/>
                 </desktop:Extension>
 
             </Extensions>

@@ -28,8 +28,17 @@ namespace DesktopToastsApp
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            // FIXME this is a workaround to get the squirrel-generated CLSID.
+            // The squirrel-generated AUMID (appUserModelID) also derives a CLSID
+            // used during COM-activation. This needs to be updated in the attribute on MyNotificationActivator.
+            var aumid = "com.squirrel.DesktopToastsApp.DesktopToastsApp";
+            var assembly = System.Reflection.Assembly.GetAssembly(typeof(Squirrel.UpdateManager));
+            var type = assembly.GetType("Squirrel.Utility");
+            var method = type.GetMethod("CreateGuidFromHash", new[] { typeof(string) });
+            var clsid = (Guid)method.Invoke(null, new object[] { aumid });
+
             // Register AUMID, COM server, and activator
-            DesktopNotificationManagerCompat.RegisterAumidAndComServer<MyNotificationActivator>("WindowsNotifications.DesktopToasts");
+            DesktopNotificationManagerCompat.RegisterAumidAndComServer<MyNotificationActivator>(aumid);
             DesktopNotificationManagerCompat.RegisterActivator<MyNotificationActivator>();
 
             // If launched from a toast

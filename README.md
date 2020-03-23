@@ -26,3 +26,17 @@ Toasts will work out-of-the-gate thanks to Desktop Bridge!
 After you've installed with the MSI once, you can debug straight from Visual Studio. Installing via the MSI creates the Start menu shortcut with the AUMID and COM CLSID so your notifications can appear and be actionable.
 
 If you don't install the MSI first, toasts will not appear.
+
+## Squirrel Installer
+
+Squirrel derives the AUMID (AppUserModelID) by building a string of schema `com.squirrel.<package id>.<executable name>`.
+This needs to be set to the process at runtime/when registering the COM server/activator.
+The COM CLSID is derived from the AUMID via https://tools.ietf.org/html/rfc4122#section-4.3 which does not seem to be implemented in the base class library of .NET.
+As a workaround `App.OnStartup` contains the calls to invoke the squirrel-internal implementation.
+
+### Packaging/Installing
+
+ 1. Build the solution in `Release` configuration
+ 2. In the package manager console run `nuget pack .\SquirrelSetup\DesktopToastsApp.nuspec`
+ 3. In the package manager console run `Squirrel --releasify .\DesktopToastsApp.1.0.0.nupkg`
+ 4. Install `Releases\Setup.exe`
